@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const NAME = 'PopoutHandler';
-
 import extend from 'extend';
+
+export const NAME = 'PopoutHandler';
 
 export class PopoutHandler {
 
@@ -89,6 +89,7 @@ export class PopoutHandler {
   open() {
     if (this.isParent === false) {
       this.isParent = true;
+      // TODO add features here https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features
       this.child = window.open(window.location.href, NAME + new Date().getTime());
       this.checkChildPopout = setInterval(() => {
         if (!this.child || this.child.closed === true) {
