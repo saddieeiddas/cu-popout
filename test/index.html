@@ -1,0 +1,47 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CU - Popout</title>
+    <link rel="stylesheet" href="../dist/css/library.css">
+    <link rel="icon" type="image/png" href="" />
+</head>
+<body>
+<button id="close">Close</button>
+<button id="open">Open</button>
+<script src="../dist/js/cu-popout.js"></script>
+<script>
+    var popout = new window.PopoutHandler({closeChildOnUnload: false});
+    var openButton = document.getElementById('open');
+    var closeButton = document.getElementById('close');
+
+    popout.onOpen(function() {
+        openButton.style.display = 'none';
+    });
+
+    popout.onClose(function() {
+        openButton.style.display = '';
+    });
+
+    if (popout.isPopout()) {
+        openButton.style.display = 'none';
+    } else if (popout.hasPopout()) {
+        openButton.style.display = 'none';
+    } else {
+        closeButton.style.display = 'none';
+    }
+
+    openButton.addEventListener('click', function() {
+        popout.open();
+    });
+
+    closeButton.addEventListener('click', function() {
+        popout.close();
+    });
+
+</script>
+</body>
+</html>
