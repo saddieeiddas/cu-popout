@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import extend from 'extend';
+import $ from 'jquery';
 
 export const NAME = 'PopoutHandler';
 
@@ -19,8 +20,12 @@ export class PopoutHandler {
     this.onunload = false;
     this.config = {
       closeChildOnUnload: true,
+      width: $(window).width(),
+      height: $(window).height(),
+      name: NAME + new Date().getTime(),
     };
     extend(true, this.config, options);
+    this.windowFeatures = 'width=' + this.config.width + ',height=' + this.config.height;
     this.register();
   }
 
@@ -89,8 +94,7 @@ export class PopoutHandler {
   open() {
     if (this.isParent === false) {
       this.isParent = true;
-      // TODO add features here https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Position_and_size_features
-      this.child = window.open(window.location.href, NAME + new Date().getTime());
+      this.child = window.open(window.location.href, this.config.name, this.windowFeatures);
       this.checkChildPopout = setInterval(() => {
         if (!this.child || this.child.closed === true) {
           clearInterval(this.checkChildPopout);

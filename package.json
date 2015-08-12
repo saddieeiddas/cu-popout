@@ -12,6 +12,7 @@
     "definition": "lib/main.d.ts"
   },
   "dependencies": {
-    "extend": "^3.0.0"
+    "extend": "^3.0.0",
+    "jquery": "^2.1.4"
   }
 }

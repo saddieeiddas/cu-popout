@@ -6,7 +6,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <head>
     <meta charset="UTF-8">
     <title>CU - Popout</title>
-    <link rel="stylesheet" href="../dist/css/library.css">
     <link rel="icon" type="image/png" href="" />
 </head>
 <body>
@@ -14,6 +13,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <button id="open">Open</button>
 <script src="../dist/js/cu-popout.js"></script>
 <script>
+    // options: {closeChildOnUnload: false, width: 500, height: 500}
     var popout = new window.PopoutHandler({closeChildOnUnload: false});
     var openButton = document.getElementById('open');
     var closeButton = document.getElementById('close');
