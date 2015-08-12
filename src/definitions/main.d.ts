@@ -10,12 +10,20 @@ declare module 'cu-popout' {
 }
 
 interface LibraryStatic {
+  PopoutEvents: PopoutEvents;
   PopoutHandler: PopoutHandlerStatic;
 }
 
+interface PopoutEvents {
+  OPEN,
+  CLOSE,
+  UNLOAD
+}
+
 interface PopoutHandlerStatic {
-  new():PopoutHandler;
+  new(): PopoutHandler;
 }
 
 interface PopoutHandler {
+  on(event:string, callback:any): any;
 }

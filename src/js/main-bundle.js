@@ -4,4 +4,4 @@
 
 import * as library from './main';
 
-window.PopoutHandler = library.PopoutHandler;
+window.Popout = library;

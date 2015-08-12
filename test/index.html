@@ -14,15 +14,15 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <script src="../dist/js/cu-popout.js"></script>
 <script>
     // options: {closeChildOnUnload: false, width: 500, height: 500}
-    var popout = new window.PopoutHandler({closeChildOnUnload: false});
+    var popout = new Popout.PopoutHandler({closeChildOnUnload: false});
     var openButton = document.getElementById('open');
     var closeButton = document.getElementById('close');
 
-    popout.onOpen(function() {
+    popout.on(Popout.PopoutEvents.OPEN, function() {
         openButton.style.display = 'none';
     });
 
-    popout.onClose(function() {
+    popout.on(Popout.PopoutEvents.CLOSE, function() {
         openButton.style.display = '';
     });
 
