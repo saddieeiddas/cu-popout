@@ -23,6 +23,7 @@ export class PopoutHandler {
       width: $(window).width(),
       height: $(window).height(),
       name: NAME + new Date().getTime(),
+      interval: 300
     };
     extend(true, this.config, options);
     this.windowFeatures = 'width=' + this.config.width + ',height=' + this.config.height;
@@ -100,7 +101,7 @@ export class PopoutHandler {
           clearInterval(this.checkChildPopout);
           this.handleClose();
         }
-      }, 10);
+      }, this.config.interval);
       this.handleOpen();
     }
   }
