@@ -4,5 +4,9 @@
   "ref": "master",
   "path": "src/definitions",
   "bundle": "src/definitions/tsd.d.ts",
-  "installed": {}
+  "installed": {
+    "node/node.d.ts": {
+      "commit": "338f9db37074d197764e95a487ddb865c5f2d73c"
+    }
+  }
 }

@@ -1,5 +1,24 @@
+/**
+ * Testing area for TypeScript definitions for library
+ */
+
 /// <reference path="./../lib/main.d.ts" />
-import library = require('cu-popout');
+
+import {PopoutHandler, PopoutHandlerOptions, PopoutEvents} from 'cu-popout';
 
 
-var test = new library.PopoutHandler();
+var options: PopoutHandlerOptions = {};
+options.closeChildOnUnload = true;
+
+var popout = new PopoutHandler(options);
+
+popout.on(PopoutEvents.CLOSE, () => {
+});
+
+
+popout.open();
+popout.close();
+popout.isMaster();
+popout.isPopout();
+popout.hasPopout();
+

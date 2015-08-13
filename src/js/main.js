@@ -8,14 +8,27 @@ import $ from 'jquery';
 
 const NAME = 'PopoutHandler';
 
+/**
+ * Popout Events
+ * @type {{UNLOAD: string, CLOSE: string, OPEN: string}}
+ */
 export const PopoutEvents = {
   UNLOAD: 'UNLOAD',
   CLOSE: 'CLOSE',
   OPEN: 'OPEN',
 };
 
+/**
+ * Handles opening and closing popouts
+ * Emits Events for PopoutEvents
+ * TODO
+ */
 export class PopoutHandler extends EventEmitter {
 
+  /**
+   * Detects popout state, and registers listeners
+   * @param options
+   */
   constructor(options) {
     super();
     this.registered = false;
@@ -77,6 +90,9 @@ export class PopoutHandler extends EventEmitter {
     console.log(NAME, 'Registered');
   }
 
+  /**
+   * Open this instance in a popout
+   */
   open() {
     if (this.isParent === false) {
       const windowFeatures = 'width=' + this.config.width + ',height=' + this.config.height;
@@ -92,20 +108,37 @@ export class PopoutHandler extends EventEmitter {
     }
   }
 
+  /**
+   * Close popouts
+   */
   close() {
     if (this.isChild) {
       window.close();
+    } else {
+      // TODO implement a way for master instance to close all child popouts
     }
   }
 
+  /**
+   * Checks if this window instance is the Master meaning it is the parent of all popouts
+   * @returns {boolean}
+   */
   isMaster() {
     return !this.isChild;
   }
 
+  /**
+   * Checks if this window instance is a popout
+   * @returns {boolean}
+   */
   isPopout() {
     return this.isChild;
   }
 
+  /**
+   * Checks if this window has opened any popouts
+   * @returns {boolean}
+   */
   hasPopout() {
     return this.isParent;
   }
